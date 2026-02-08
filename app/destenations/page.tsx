@@ -1,6 +1,13 @@
 import Hero from "@/components/ui/hero";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Destenations",
+    description: "Discover the country's hidden gems and breathtaking landscapes",
+};
 
 export default function Destenations() {
+
     return (
         <div>
             <Hero

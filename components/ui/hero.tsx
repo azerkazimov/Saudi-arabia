@@ -12,9 +12,9 @@ export default function Hero({image, title, description}: HeroProps) {
     const pathname = usePathname();
 
     return (
-        <section className="z-0">
-            <Image src={image} alt="explore" fill className="w-full object-cover" />
-            <div className="absolute inset-0 bg-black/50" />
+        <section className="z-0 min-h-[720px] ">
+            <Image src={image} alt="explore" fill className="w-full min-h-[600px] lg:min-h-[982px] object-cover" />
+            <div className="absolute inset-0 bg-black/40 w-full min-h-[600px] lg:min-h-[982px]" />
             <div className="container mx-auto relative z-10 flex flex-col items-center mt-[122px] h-full">
                 <h1 className="text-[98px] font-extrabold text-white max-w-[650px] text-center leading-[100px]">{title}</h1>
                 <p className="text-white text-xl max-w-[576px] text-center">{description}</p>
