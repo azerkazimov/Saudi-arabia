@@ -1,6 +1,7 @@
-
+'use client';
 import DestinationCard from "@/components/ui/destination-card";
 import SectionHeader from "./section-header";
+import { useMobile } from "@/hooks/use-mobile";
 
 const destinations = [
     {
@@ -73,6 +74,25 @@ const destinations = [
 ]
 
 export default function Destenations() {
+    const isMobile = useMobile();
+
+    if (isMobile) {
+        return (
+            <div className="grid grid-cols-1 gap-4 mt-12">
+                {
+                    destinations.map((destination) => (
+                        <DestinationCard
+                            key={destination.id}
+                            {...destination}
+                            height={420}
+                        />
+                    ))
+                }
+            </div>
+        )
+    }
+
+
     return (
         <section className="mt-12 container mx-auto">
             <SectionHeader
@@ -80,34 +100,18 @@ export default function Destenations() {
                 description="Explore the enchanting landscapes of saudi Arabia, from
                             the breathtaking deserts to the stunning coastal shores."
             />
-            <div className="flex flex-col md:flex-row gap-4 mt-12">
-                {/* {
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-12">
+                {
                     destinations.map((destination, index) => (
-                        <DestinationCard 
-                            key={destination.id} 
-                            {...destination} 
-                            height={index % 2 === 0 ? 672 : 420} 
+                        <DestinationCard
+                            key={destination.id}
+                            {...destination}
+                            height={index % 2 === 0 ? 672 : 420}
                         />
                     ))
-                } */}
+                }
 
-                {/* First column - cards 0 and 1 */}
-                <div className="flex flex-col gap-4 flex-1">
-                    <DestinationCard {...destinations[0]} height={672} />
-                    <DestinationCard {...destinations[1]} height={420} />
-                </div>
 
-                {/* Second column - cards 2 and 4 */}
-                <div className="flex flex-col gap-4 flex-1">
-                    <DestinationCard {...destinations[2]} height={672} />
-                    <DestinationCard {...destinations[4]} height={420} />
-                </div>
-
-                {/* Third column - cards 3 and 5 */}
-                <div className="flex flex-col gap-4 flex-1">
-                    <DestinationCard {...destinations[3]} height={420} />
-                    <DestinationCard {...destinations[5]} height={672} />
-                </div>
             </div>
         </section>
     )

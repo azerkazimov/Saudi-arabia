@@ -1,3 +1,5 @@
+"use client";
+import { useMobile } from "@/hooks/use-mobile";
 import Image from "next/image";
 
 interface DestinationCardProps {
@@ -13,11 +15,13 @@ interface DestinationCardProps {
     height?: number;
 }
 
-export default function DestinationCard({ image, title, description, traveler, height = 600 }: DestinationCardProps) {
+export default function DestinationCard({ id, image, title, description, traveler, height = 600 }: DestinationCardProps) {
 
+    const isMobile = useMobile();
+    const marginTop = isMobile ? 0 : id % 5 === 0 ? -250 : 0;
 
     return (
-        <div className="rounded-[80px] relative" style={{ height: `${height}px` }}>
+        <div className="rounded-[80px] relative" style={{ height: `${height}px`, marginTop: marginTop }} >
             <Image src={image} alt={title} width={100} height={height} className="w-full h-full object-cover rounded-[80px] absolute inset-0" />
             <div className="flex flex-col justify-between relative z-10 h-full py-12 px-8">
 
