@@ -1,14 +1,9 @@
 "use client";
 
-import Hero from "@/components/ui/hero";
-import Image from "next/image";
-import { useEffect, useState } from "react";
 
-interface Member {
-    id: number;
-    login: string;
-    avatar_url: string;
-}
+import MembersPage from "@/components/pages/members/components/members";
+import Hero from "@/components/ui/hero";
+
 
 export default function Members() {
 
@@ -20,6 +15,7 @@ export default function Members() {
                 title="About Us"
                 description="Discover the country's hidden gems and breathtaking landscapes"
             />
+            <MembersPage />
         </div>
     )
 }

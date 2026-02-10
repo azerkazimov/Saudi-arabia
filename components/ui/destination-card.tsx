@@ -1,5 +1,6 @@
 "use client";
 import { useMobile } from "@/hooks/use-mobile";
+import { useTablet } from "@/hooks/use-tablet";
 import Image from "next/image";
 
 interface DestinationCardProps {
@@ -18,7 +19,8 @@ interface DestinationCardProps {
 export default function DestinationCard({ id, image, title, description, traveler, height = 600 }: DestinationCardProps) {
 
     const isMobile = useMobile();
-    const marginTop = isMobile ? 0 : id % 5 === 0 ? -250 : 0;
+    const isTablet = useTablet();
+    const marginTop = isMobile || isTablet ? 0 : id % 5 === 0 ? -250 : 0;
 
     return (
         <div className="rounded-[80px] relative" style={{ height: `${height}px`, marginTop: marginTop }} >
